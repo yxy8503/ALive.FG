@@ -1,14 +1,26 @@
 using Microsoft.AspNetCore.Authentication.Negotiate;
+using SqlSugar;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddHttpContextAccessor();
+
+builder.Services.AddSingleton<ISqlSugarClient>(s =>
+{
+    SqlSugarScope sqlSugar = new SqlSugarScope(new ConnectionConfig()
+        {
+            DbType = SqlSugar.DbType.MySql,
+            ConnectionString = "DataSource=sqlsugar-dev.db",
+            IsAutoCloseConnection = true,
+        });
+    return sqlSugar;
+});
 builder.Services.AddAuthentication(NegotiateDefaults.AuthenticationScheme)
     .AddNegotiate();
 

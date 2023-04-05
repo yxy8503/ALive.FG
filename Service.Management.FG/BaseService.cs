@@ -7,7 +7,7 @@ namespace Service.Management.FG;
 
 public class BaseService<TEntity> : IBaseService<TEntity> where TEntity : class, new()
 {
-    protected readonly IBaseRepository<TEntity> _iBaseRepository;
+    protected IBaseRepository<TEntity> _iBaseRepository;
 
     public async Task<bool> CreateAsync(TEntity entity)
     {

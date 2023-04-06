@@ -3,6 +3,7 @@ using SqlSugar;
 
 var builder = WebApplication.CreateBuilder(args);
 
+var conn = builder.Configuration["SqlConn"];
 // Add services to the container.
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -16,7 +17,7 @@ builder.Services.AddSingleton<ISqlSugarClient>(s =>
     SqlSugarScope sqlSugar = new SqlSugarScope(new ConnectionConfig()
         {
             DbType = SqlSugar.DbType.MySql,
-            ConnectionString = "DataSource=sqlsugar-dev.db",
+            ConnectionString = conn,
             IsAutoCloseConnection = true,
         });
     return sqlSugar;

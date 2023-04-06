@@ -7,7 +7,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\IService.Management.FG\IService.Management.FG.csproj" />
+      <ProjectReference Include="..\Model.Management.FG\Model.Management.FG.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="SqlSugar.IOC" Version="2.0.0" />
     </ItemGroup>
 
 </Project>

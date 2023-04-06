@@ -7,7 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\IService.Management.FG\IService.Management.FG.csproj" />
+      <ProjectReference Include="..\IRepository.Management.FG\IRepository.Management.FG.csproj" />
     </ItemGroup>
 
 </Project>
